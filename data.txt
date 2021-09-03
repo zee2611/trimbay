@@ -1,0 +1,178 @@
+import "./App.css";
+import { GoogleLogin } from "react-google-login";
+import FacebookLogin from "react-facebook-login";
+import axios from "axios";
+
+function App() {
+  const onSuccess = (response) => {
+    console.log(response);
+
+    axios
+      .post("http://localhost:5000/auth/googleLogin", {
+        tokenId: response.tokenId,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  };
+
+  const onFailure = () => {};
+
+  const responseFacebook = (response) => {
+    console.log(response);
+  };
+
+  return (
+    <div className="App">
+      <GoogleLogin
+        clientId="255334458330-t1u9bqra92q352v3uhaiopt6atiq7sv6.apps.googleusercontent.com"
+        buttonText="Google Login"
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        cookiePolicy={"single_host_origin"}
+      />
+      <FacebookLogin
+        appId="1429687730729133"
+        autoLoad={true}
+        callback={responseFacebook}
+      />
+      ,
+    </div>
+  );
+}
+
+export default App;
+
+
+
+user.shippingAddress[objIndex].lastName = shippingAddress.lastName;
+        user.shippingAddress[objIndex].mobileNumber =
+          shippingAddress.mobileNumber;
+        user.shippingAddress[objIndex].address = shippingAddress.address;
+        user.shippingAddress[objIndex].city = shippingAddress.city;
+        user.shippingAddress[objIndex].state = shippingAddress.state;
+        user.shippingAddress[objIndex].country = shippingAddress.country;
+        user.shippingAddress[objIndex].landmark = shippingAddress.landmark;
+        user.shippingAddress[objIndex].zipcode = shippingAddress.zipcode;
+
+
+         if (user.shippingAddress.length = 0) {
+        return res
+          .status(400)
+          .json({ err, message: "user doesnt hav address" });
+      } 
+
+
+
+const handlequery = async (
+  req,
+  res,
+  query,
+  category,
+  subCategory,
+  price,
+  rating,
+  sort,
+  color,
+  themes
+) => {
+  try {
+    const products = await Product.find({
+      $and: [
+        { category: category },
+        { subCategory: subCategory },
+        { $text: { $search: query } },
+        {
+          price: {
+            $gte: price[0],
+            $lte: price[1],
+          },
+        },
+        {
+          rating: {
+            $gte: rating[0],
+            $lte: rating[1],
+          },
+        },
+        { color: color },
+        { themes: themes },
+      ],
+    })
+      .populate("category", "_id, name")
+      .populate("subCategory", "_id, name")
+      .sort([[sort.price, sort.order]])
+      .exec();
+    if (!products) return res.status(400).json({ error: "no products found" });
+    res.status(200).json({ products });
+  } catch (error) {
+    res.status(400).json({ error: error });
+  }
+};
+
+exports.getProductsByFilter = async (req, res) => {
+  const { category, subCategory, query, price, rating, sort, color, themes } =
+    req.body;
+
+  if (query || price || rating || sort || color || themes) {
+    console.log(query, price, rating, sort, color, themes);
+    await handlequery(
+      req,
+      res,
+      query,
+      category,
+      subCategory,
+      price,
+      rating,
+      sort,
+      color,
+      themes
+    );
+  }
+};
+
+"images": [
+            "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg",
+            "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg",
+            "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg",
+            "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg"
+          ]
+
+
+                if (cart) {
+        Auth.findOne({ _id: req.user._id }, (err, user) => {
+          if (err || !user) {
+            return res
+              .status(400)
+              .json({ err, message: "user profile doesnt found" });
+          }
+
+          const isProductAdded = user.wishlist?.find(
+            (wish) => wish == productId
+          );
+
+          if (isProductAdded) {
+            return res.status(400).json({
+              error: "You already hav this product in your cart",
+            });
+          }
+
+          user.wishlist.push(productId);
+
+          user
+            .save()
+            .then((myData) => {
+              res.status(200).json({ message: "whishlist added" });
+            })
+            .catch((err) => {
+              console.log(err);
+              res.status(400).json({ error: "unable to add whishlist" });
+            });
+        }).select("-password");
+      }
+
+
+      These are apis completed todays and
+
+      1) Brand
+      2) Themes
+      3) banner

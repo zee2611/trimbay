@@ -1,0 +1,75 @@
+Authentication Api
+
+1) signup 
+2) Login with email and Password
+3) Google login
+4) change password
+5) Forgot password
+6) Rest password
+
+User Api
+
+1) Get single user
+2) Get Logged in user Profile
+3) Get all User 
+4) Delete User
+5) Add user shipping address
+6) Remove user shipping address
+7) Edit user shipping address
+8) Update user profile
+9) Add Card details
+10) Add whishlist
+11) Remove whishlist
+12) Change user as verified
+
+category api 
+
+1) create category
+2) get single category
+3) update category
+4) delete category
+5) get all category
+
+sub category api 
+
+1) create subcategory
+2) get single subcategory
+3) update subcategory
+4) delete subcategory
+5) get all subcategory
+6) get subcategory based on parent category
+
+product api
+
+1) create product
+2) get single product 
+3) get all product
+4) delete product
+5) Add product review with rating and comment
+6) New Arrival
+7) Best Seller
+8) Get Products Based on Category
+9) Get Products Based on Category and subcategory
+10) Get product by filter
+
+s3 api
+
+1) Image Upload
+
+Cart api
+
+1) Add to cart
+2) Get User cart
+3) Remove Product from cart
+4) Move product to whishlist
+
+
+
+These are apis completed todays and
+
+1) Place order (without payment)
+2) My order 
+3) Get all Order 
+4) Get single order details
+5) Update order statuses
+6) Create general feedback
